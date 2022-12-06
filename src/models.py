@@ -47,14 +47,22 @@ class Planet(Base):
     update_date = Column(String(250))
     url = Column(String(250))
 
-class Favorite(Base):
+class CharactersFavorites(Base):
     __tablename__ = 'favorite'
     # Here we define columns for the table address.
     # Notice that each column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
     id_user = Column(Integer, ForeignKey('user.id'))
     id_character = Column(Integer, ForeignKey('character.id'))
+
+class PlanetsFavorites(Base):
+    __tablename__ = 'favorite'
+    # Here we define columns for the table address.
+    # Notice that each column is also a normal Python instance attribute.
+    id = Column(Integer, primary_key=True)
+    id_user = Column(Integer, ForeignKey('user.id'))
     id_planet = Column(Integer, ForeignKey('planet.id'))
+
 
     def to_dict(self):
         return {}
